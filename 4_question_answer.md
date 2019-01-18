@@ -27,7 +27,7 @@ This makes no assumptions about anything and simply creates a controller
 file by appending _controller.rb to the name you supply to the
 generator.
 
-## > Ruby on Rails follow linguistic convention.
+*Ruby on Rails follow linguistic convention.*
 
 >That means a model represents a single user, whereas a database table consists of many users.
 >
