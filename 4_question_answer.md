@@ -1,72 +1,82 @@
 QUESTION ONE
-[[This is an explanation on the proper use of "single" and "plural" in Rails.
+============
+
+`is an explanation on the proper use of "single" and "plural" in Rails.
 For example, "blogs" is specified for the parameter when the controller is created, 
 and "blog" is specified when the model is created, respectively. Various variables are 
 automatically created based on that, so I think "blogs" and "blog" should be used differently,
-but I am confused because there is no description about it anywhere.]]
+but I am confused because there is no description about it anywhere. `
 
->>>>>>>>ANSWER:<<<<<<<<<<<
-
-Let me give you an example;
-$ rails g controller project Generates app/controllers/project_controller.rb
-and
-$ rails g scaffold controller project Generates app/controllers/projects_controller.rb and
-app/views/projects/
-?
->>>>So, the scaffold_controller generator assumes the full MVC stack from
+ANSWER:
+---------
+## > Let me give you an example
+>
+>$ rails g controller project Generates app/controllers/project_controller.rb and
+>
+>$ rails g scaffold controller project Generates app/controllers/projects_controller.rb and
+app/views/projects/?
+>
+> ## So, the scaffold_controller generator assumes the full MVC stack from
 model, through controller, to the views. In other words, running
 scaffold_controller assumes you already have a Project model and assumes
 the plural form that is the convention for controllers representing
 model objects.
-$ rails g controller project
+>
+> $ rails g controller project
 This makes no assumptions about anything and simply creates a controller
 file by appending _controller.rb to the name you supply to the
-generator.<<<<<
+generator.
 
-Ruby on Rails follow linguistic convention. 
-That means a model represents a single user, whereas a database table consists of many users.
+## > Ruby on Rails follow linguistic convention.
 
-By default, Active Record uses some naming conventions to find out how the mapping 
-between models and database tables should be created. Rails will pluralize your class
-names to find the respective database table. So, for a class Book, you should have a database table called books.
-The Rails pluralization mechanisms are very powerful, being capable of pluralizing (and singularizing) both regular 
-and irregular words. When using class names composed of two or more words, 
-the model class name should follow the Ruby conventions, using the CamelCase form, while the table name must contain the words separated by underscores. Examples:
-•	Model Class - Singular with the first letter of each word capitalized (e.g., BookClub).
-•	Database Table - Plural with underscores separating words (e.g., book_clubs).
+>That means a model represents a single user, whereas a database table consists of many users.
+>
+>By default, Active Record uses some naming conventions to find out how the mapping 
+ between models and database tables should be created. Rails will pluralize your class
+ names to find the respective database table. So, for a class Book, you should have a database table called books.
+>
+>The Rails pluralization mechanisms are very powerful, being capable of pluralizing (and singularizing) both regular 
+ and irregular words. When using class names composed of two or more words, the model class name should follow the Ruby conventions, 
+ using the CamelCase form, while the table name must contain the words separated by underscores. 
+>
+>Examples:
+-	Model Class - Singular with the first letter of each word capitalized (e.g., BookClub).
+-	Database Table - Plural with underscores separating words (e.g., book_clubs).
+ 
 
-Reference: https://edgeguides.rubyonrails.org/active_record_basics.html#naming-conventions
-
-
+-[Reference:](ttps://edgeguides.rubyonrails.org/active_record_basics.html#naming-conventions).
 
 
 QUESTION TWO
-When I try "rake routes", 
-[[there are also "blog" "new_blog" "blogs" and "confirm_blogs" in the Prefix, and I do not understand why.]]
+=============
+`When I try "rake routes", 
+there are also "blog" "new_blog" "blogs" and "confirm_blogs" in the Prefix, and I do not understand why. `
 
- >>>>>>>>>>>ANSWER<<<<<<<<<<
- Before telling you what a prefix is let us go back to what we learned so far.
- Purpose of the Rails router
-
-The Rails router recognizes the received URL and assigns it to an appropriate controller action
-or Rack application. Routers can also generate paths and URLs to avoid hard-coding these paths and 
-URLs directly in the view.
-
-After you’ve completed the process of creating a blog, now is the step of creating view. 
-However there is no particular view we want to show, so let’s redirect to the blog submit page again..
-
-What is redirect?
-Redirect on the website (English: redirect) is to automatically
-transfer from the designated webpage to another webpage when browsing the website. 
-Also called URL redirection (URL redirection).
-
-Redirect with Prefix
-As for the argument to pass to the redirect_to method, but it is common to use prefix instead of URL.
-A Prefix is like a nickname of an automatically generated URL when setting up routing.
+ ANSWER:
+ -------
+ ## > Before telling you what a prefix is let us go back to what we learned so far. Purpose of the Rails router
+>
+> The Rails router recognizes the received URL and assigns it to an appropriate controller action or Rack application. Routers can also 
+  generate paths and URLs to avoid hard-coding these paths and URLs directly in the view.
+>
+> After you’ve completed the process of creating a blog, now is the step of creating view. 
+  However there is no particular view we want to show, so let’s redirect to the blog submit page again.. 
 
 
-Prefix can be confirmed by executing rails routes command.
-dive_into_code:~/workspace/sample (master) $ rake routes
+**What is redirect?**
+
+> Redirect on the website (English: redirect) is to automatically
+  transfer from the designated webpage to another webpage when browsing the website.  
+  Also called URL redirection (URL redirection). 
+
+**Redirect with Prefix**
+> As for the argument to pass to the redirect_to method, but it is common to use prefix instead of URL.
+  A Prefix is like a nickname of an automatically generated URL when setting up routing.
+
+>
+**Prefix can be confirmed by executing rails routes command.**
+>
+> `dive_into_code:~/workspace/sample (master) $ rake routes
    Prefix Verb   URI Pattern               Controller#Action
     blogs GET    /blogs(.:format)          blogs#index
           POST   /blogs(.:format)          blogs#create
@@ -75,15 +85,16 @@ edit_blog GET    /blogs/:id/edit(.:format) blogs#edit
      blog GET    /blogs/:id(.:format)      blogs#show
           PATCH  /blogs/:id(.:format)      blogs#update
           PUT    /blogs/:id(.:format)      blogs#update
-          DELETE /blogs/:id(.:format)      blogs#destroy
-The column to the left is Prefix. Prefix can represent URL.
+          DELETE /blogs/:id(.:format)      blogs#destroy `
+
+>
+>The column to the left is Prefix. Prefix can represent URL.
 For example, Prefix’s blogs represent / blogs and new_blog represents / blogs / new.（
 When using Prefix, you need to write ‘_path and _url mentioned later）
-About _path
-A relative path can be generated by adding _path to Prefix.
-In other words, new_blog_path has the same meaning as / blogs / new.
-To specify an absolute path, add _url.
-new_blog_url has the same meaning as https: //..../ blogs / new.
+>
+**About _path**
+> A relative path can be generated by adding _path to Prefix.
+> In other words, new_blog_path has the same meaning as / blogs / new.
+> To specify an absolute path, add _url.new_blog_url has the same meaning as https: //..../ blogs / new.
 
-
-Ref: https://client.diveintocode.jp/curriculums/949
+ [Ref](ttps://client.diveintocode.jp/curriculums/949).
