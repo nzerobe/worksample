@@ -44,9 +44,6 @@ generator.
 -	Database Table - Plural with underscores separating words (e.g., book_clubs).
  
 
--[Reference:](ttps://edgeguides.rubyonrails.org/active_record_basics.html#naming-conventions).
-
-
 QUESTION TWO
 =============
 `When I try "rake routes", 
@@ -97,4 +94,4 @@ When using Prefix, you need to write ‘_path and _url mentioned later）
 > In other words, new_blog_path has the same meaning as / blogs / new.
 > To specify an absolute path, add _url.new_blog_url has the same meaning as https: //..../ blogs / new.
 
- [Ref](ttps://client.diveintocode.jp/curriculums/949).
+
