@@ -9,14 +9,14 @@ but I am confused because there is no description about it anywhere. `
 
 ANSWER:
 ---------
-## > Let me give you an example
+*Let me give you an example*
 >
 >$ rails g controller project Generates app/controllers/project_controller.rb and
 >
 >$ rails g scaffold controller project Generates app/controllers/projects_controller.rb and
 app/views/projects/?
 >
-> ## So, the scaffold_controller generator assumes the full MVC stack from
+> So, the scaffold_controller generator assumes the full MVC stack from
 model, through controller, to the views. In other words, running
 scaffold_controller assumes you already have a Project model and assumes
 the plural form that is the convention for controllers representing
@@ -51,7 +51,7 @@ there are also "blog" "new_blog" "blogs" and "confirm_blogs" in the Prefix, and 
 
  ANSWER:
  -------
- ## > Before telling you what a prefix is let us go back to what we learned so far. Purpose of the Rails router
+ **Before telling you what a prefix is let us go back to what we learned so far. Purpose of the Rails router**
 >
 > The Rails router recognizes the received URL and assigns it to an appropriate controller action or Rack application. Routers can also 
   generate paths and URLs to avoid hard-coding these paths and URLs directly in the view.
